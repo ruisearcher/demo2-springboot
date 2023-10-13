@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.example.demo2.dao.UserMapper">
+
+    <!--
+    当数据库和实体类不匹配时
+        1.可以使SQL的起别名
+        2.是resultMap
+    -->
+    <!--配置 查询结果的列名和实体类的属性名的对应关系-->
+    <!--
+    <resultMap id="userMap" type="cn.lz.domain.User">
+        主键字段的对应
+            Property   实体类中对应的属性名称
+            Column     数据库中对应的值&ndash;&gt;
+        <id property="userID" column="id"></id>
+        非主键字段的对应&ndash;&gt;
+        <result property="" column=""></result>
+    </resultMap>
+    -->
+
+    <select id="findAll" resultType="java.lang.Integer" >
+        select * from t_user
+        <where>
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
+            <if test="userName != null">
+                and user_name = #{userName}
+            </if>
+        </where>
+    </select>
+
+    <select id="findByUserName" resultType="com.example.demo2.entity.User">
+        select * from t_user where user_name = #{userName}
+    </select>
+
+</mapper>

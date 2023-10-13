@@ -1,0 +1,1 @@
+INSERT INTO t_user (USER_ID,USER_NAME) VALUES(1,'user1');
